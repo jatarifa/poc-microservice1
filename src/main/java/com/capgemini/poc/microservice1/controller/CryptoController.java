@@ -14,8 +14,6 @@ import com.capgemini.poc.microservice1.service.RandomizeService;
 @RequestMapping("/crypto")
 public class CryptoController 
 {
-	final static String queueName = "microservices_arch";
-	
 	@Autowired
 	private RabbitTemplate rabbitTemplate;
 	
