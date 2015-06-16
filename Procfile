@@ -1,0 +1,1 @@
+web: java -Dserver.port=$PORT -Dspring.rabbitmq.host=owl.rmq.cloudamqp.com -Dspring.rabbitmq.port=80 -Dspring.rabbitmq.username=zxqvoijt -Dspring.rabbitmq.password=JG89C0OHtV6n3dfIUhsA7tZwQPXb19Kd -Dspring.rabbitq.virtual-host=zxqvoijt -jar target/microservice1-0.0.1-SNAPSHOT.jar
