@@ -10,13 +10,13 @@ import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class Microservice1Application {
-	
-	final static String queueName = "microservices_arch";
 
+	final static String queueName = "microservices_arch";
+	
 	public static void main(String[] args) {
         SpringApplication.run(Microservice1Application.class, args);
     }
-    
+	
 	@Bean
 	Queue queue() {
 		return new Queue(queueName, false);

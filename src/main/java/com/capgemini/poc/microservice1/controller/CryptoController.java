@@ -28,7 +28,7 @@ public class CryptoController
     {
         byte [] cif = cipherService.cipher(randomService.getRandomString().getBytes(), key);
         Password pwd = new Password(org.apache.commons.codec.binary.Base64.encodeBase64URLSafeString(cif), key);
-        rabbitTemplate.convertAndSend("Password:Generation");
+        rabbitTemplate.convertAndSend("microservices_arch","Password:Generation");
         
         return pwd;
     }
