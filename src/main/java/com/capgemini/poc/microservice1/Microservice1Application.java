@@ -14,7 +14,10 @@ public class Microservice1Application {
 	final static String queueName = "microservices_arch";
 	
 	public static void main(String[] args) {
-        SpringApplication.run(Microservice1Application.class, args);
+        SpringApplication.run(new Object[]{
+				Microservice1Application.class,
+				MetricsConfiguration.class
+        }, args);
     }
 	
 	@Bean
