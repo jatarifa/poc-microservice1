@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.capgemini.poc.microservice1.model.Event;
 import com.capgemini.poc.microservice1.model.Password;
 import com.capgemini.poc.microservice1.service.CipherService;
 import com.capgemini.poc.microservice1.service.RandomizeService;
@@ -28,7 +29,13 @@ public class CryptoController
     {
         byte [] cif = cipherService.cipher(randomService.getRandomString().getBytes(), key);
         Password pwd = new Password(org.apache.commons.codec.binary.Base64.encodeBase64URLSafeString(cif), key);
-        rabbitTemplate.convertAndSend("microservices_arch","Password:Generation");
+
+        Event ev = new Event("passwordGeneration");
+        ev.addData("key", key);
+        ev.addData("password", pwd.getPassword());
+        ev.addData("email", "jatarifa@gmail.com");
+        
+        rabbitTemplate.convertAndSend(ev.toJSON());
         
         return pwd;
     }
